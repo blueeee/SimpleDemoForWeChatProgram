@@ -1,0 +1,87 @@
+page {
+  height: 100%;
+} 
+text {
+  color: #FFFFFF;
+  font-family: Georgia,serif;
+}
+.container {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+scroll-view {
+  background-image: url("../../image/bg_na.jpg");
+  height: 2270rpx;
+}
+#title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 100rpx;
+}
+#city {
+  font-size: 1.3em;
+}
+#weather-description {
+  font-size: 0.8em;
+}
+#temperature {
+  font-size: 3.0em;
+  margin-top: 50rpx;
+}
+/*forecast*/
+#forecast{
+  background-color: rgba(0,0,0,0.2);
+  height: 820rpx;
+  margin-top: 50rpx;
+  padding: 10rpx 0rpx 0rpx 0rpx;
+}
+#forecast-text {
+  font-size: 0.7em;
+  margin-left: 20rpx;
+}
+.line {
+  background-color: rgba(178,178,178,0.3);
+}
+#forecast-top-line {
+  width: 100%;
+  height: 1rpx;
+  margin-top: 15rpx;
+}
+/*forecast-container-days*/
+.forecast-container-days {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+}
+.weatherForecast-item {
+  width: 150rpx;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: center;
+}
+.weatherForecast-item-day, .weatherForecast-item-date, .weatherForecast-item-description {
+  font-size: 0.72em;
+  margin-top: 10rpx;
+}
+.weatherForecast-item-img {
+  margin-top: 20rpx;
+  height: 55rpx;
+  width: 55rpx;
+}
+/*forecast-container-mid*/
+#forecast-container-mid {
+  margin-top: 20rpx;
+  height: 320rpx;
+  width: 750rpx;
+  background-color: rgba(0,0,0,0.1);
+}
+#forecast-canvas{
+  height: 320rpx;
+  width: 750rpx;
+}

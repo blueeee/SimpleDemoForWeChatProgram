@@ -1,0 +1,39 @@
+<view class="container">
+    <scroll-view class="scroll-view" scroll-x="false" scroll-y="true">
+        <view id="title">
+            <text id="city">{{city}}</text>
+            <text id="weather-description">{{weatherDescription}}</text>
+            <text id="temperature">{{temperature}}℃</text>  
+        </view>
+        <view id="forecast">
+            <text id="forecast-text">天气预报</text>
+            <view class="line" id="forecast-top-line">
+            </view>
+            <view id="forecast-container-top" class="forecast-container-days">
+                <block wx:for="{{topWeatherForecast}}" wx:for-item="item" wx:key="*this">
+                    <view class="weatherForecast-item">
+                        <text class="weatherForecast-item-day">{{item.day}}</text>
+                        <text class="weatherForecast-item-date">{{item.date}}</text>
+                        <text class="weatherForecast-item-description">{{item.description}}</text>
+                        <image class="weatherForecast-item-img" src="{{item.imageSrc}}"></image>
+                    </view>
+                </block>
+            </view>
+            <view id="forecast-container-mid">
+                <canvas canvas-id="forecastCanvas" id="forecast-canvas">
+                </canvas>
+            </view>
+            <view id="forecast-container-bottom" class="forecast-container-days">
+                <block wx:for="{{bottomWeatherForecast}}" wx:for-item="item" wx:key="*this">
+                    <view class="weatherForecast-item">
+                        <image class="weatherForecast-item-img" src="{{item.nightImageSrc}}"></image>
+                        <text class="weatherForecast-item-description">{{item.nightDescription}}</text>
+                        <text class="weatherForecast-item-date">{{item.wind}}</text>
+                        <text class="weatherForecast-item-day">{{item.windLevel}}</text> 
+                    </view>
+                </block>
+            </view>
+        </view>
+    </scroll-view>
+    
+</view>
