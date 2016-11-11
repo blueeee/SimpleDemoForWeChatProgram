@@ -5,22 +5,22 @@ text {
   color: #FFFFFF;
   font-family: Georgia,serif;
 }
-.container {
+#container {
   height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
+  background-image: url("../../image/bg_na.jpg");
 }
 scroll-view {
-  background-image: url("../../image/bg_na.jpg");
-  height: 2270rpx;
+  height: 1204rpx;
+}
+#container-back{
+  height: 2000rpx;
+  padding-top: 50rpx;
 }
 #title {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 100rpx;
 }
 #city {
   font-size: 1.3em;
@@ -84,4 +84,15 @@ scroll-view {
 #forecast-canvas{
   height: 320rpx;
   width: 750rpx;
+}
+/*footer*/
+#footer{
+  height: 50rpx;
+  background-color: rgba(0,0,0,0.1);
+}
+#to-city{
+  margin-top: 5rpx;
+  padding-left: 93%; 
+  width: 40rpx;
+  height: 40rpx;
 }

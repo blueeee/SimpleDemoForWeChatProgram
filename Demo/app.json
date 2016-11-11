@@ -1,6 +1,7 @@
 {
   "pages":[
-    "pages/weatherMain/weatherMain"
+    "pages/weatherMain/weatherMain",
+    "pages/weatherCity/weatherCity"
   ],
   "window":{
     "backgroundTextStyle":"light",

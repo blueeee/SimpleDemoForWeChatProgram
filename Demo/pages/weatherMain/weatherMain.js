@@ -7,7 +7,7 @@ Page({
     
     },
     onReady: function() {
-      var url = getApp().globalData.weatherQueqyUrl + '?cityname=南京&key=' + getApp().globalData.weatherAPIKey;
+      var url = getApp().globalData.weatherQueqyUrl + '?cityname=广州&key=' + getApp().globalData.weatherAPIKey;
         var thisthis = this;
         //数据绑定
         var dataBind = function(data) {
@@ -24,11 +24,11 @@ Page({
           },
           method: 'GET',
           header: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           },
           success: function(res){
             // success
-            console.log("success");
+            console.log("request success");
             var resData = res.data.result.data;
             dataBind(resData);
             var temperatures = dataAdapter.temperatureDataAdapter(resData);
@@ -37,11 +37,11 @@ Page({
           },
           fail: function() {
             // fail
-            console.log("fail");
+            console.log("request fail");
           },
           complete: function() {
             // complete
-            console.log("complete");
+            console.log("request complete");
           }
         });
     },
@@ -86,26 +86,29 @@ function drawTemperature(temperatures){
   //绘图
   var context = wx.createContext();
   //day
-  context.setStrokeStyle("#ffff00");
-  context.setLineWidth(2);
+  
   dayTemperature.forEach(function (element, index, array){
     var x = canvasWidthOrigin + canvasWidthGap*index;
     var y = (maxTemperature -dayTemperature[index])*canvasHeightGap +canvasHeightOrigin;
     if (index == 0) {
       context.moveTo(x,y);
     } else{
+      //绘制温度曲线
+      context.setStrokeStyle("#d9ac0f");
+      context.setLineWidth(1);
       context.lineTo(x,y);
+      context.stroke();
     }
-    
+    //绘制温度文字
     context.setFontSize(12)
     context.setFillStyle('#ffffff');   
     context.fillText(dayTemperature[index]+"℃", x - 6, y-10);
   });
-  context.stroke();
+  
   //night
   context.beginPath();
   context.setStrokeStyle("#20bcfa");
-  context.setLineWidth(2);
+  context.setLineWidth(1);
   nightTemperature.forEach(function (element, index, array){
     var x = canvasWidthOrigin + canvasWidthGap*index;
     var y = (maxTemperature -nightTemperature[index])*canvasHeightGap +canvasHeightOrigin;
@@ -119,6 +122,7 @@ function drawTemperature(temperatures){
     context.fillText(dayTemperature[index]+"℃", x - 6, y + 20);
   });
   context.stroke();
+  
   wx.drawCanvas({
     canvasId: 'forecastCanvas',
     actions: context.getActions() //获取绘图动作数组
