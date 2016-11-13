@@ -3,5 +3,92 @@ page {
 } 
 #container {
   height: 100%;
+}
+/*serachArea*/
+#search-container{
+  height: 150rpx;
   background-image: url("../../image/bg_rain_night.jpg");
+  position:relative;
+}
+.search-area{
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-color: rgba(255,255,255,1);
+  height: 70rpx;
+  width: 450rpx;
+  border-radius: 40rpx 40rpx 40rpx 40rpx;
+  display: flex;
+  justify-content: space-between;   
+  align-items: center;
+}
+#search-icon{
+  margin-left: 20rpx;
+}
+#clear-icon{
+  margin-right: 20rpx;
+}
+.search-placeholder{
+  font-size: 30rpx;
+}
+#search-input {
+  height: 70rpx;
+  width: 250rpx;
+}
+/*emptyArea*/
+.empty-area{
+  height: 1104rpx;
+}
+#empty-image{
+  height: 345rpx;
+  width: 270rpx;
+  position:relative;
+  top: 250rpx;
+  left: 240rpx;
+}
+#empty-text{
+  height: 132rpx;
+  width: 320rpx;
+  display:block; 
+  margin:auto;
+  margin-top: 270rpx;
+}
+/*cityArea*/
+.city-area{
+  height: 1104rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+#city-search-text{
+  height: 90rpx;
+  line-height: 90rpx;
+  overflow:hidden;
+  font-size: 27rpx;
+  color: rgba(80,80,80,1);
+  text-align: center;
+}
+#city-panel{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.city-item{
+  height: 100rpx;
+  width: 250rpx;
+  position:relative;
+}
+.city-text{
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  width: 180rpx;
+  font-size: 32rpx;
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0;
+  border-style:solid;
+  border-color: #AAAAAA;
+  border-width: 1rpx;
+  border-radius: 30rpx;
 }

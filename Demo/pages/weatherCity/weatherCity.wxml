@@ -1,2 +1,24 @@
 <view id="container" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <view id="search-container">
+        <view class= "search-area">
+            <icon id="search-icon" type="search" bindtap="tapSearchIcon"/>
+            <input id="search-input" placeholder="搜索国内城市" placeholder-class="search-placeholder" value="{{inputValue}}" bindinput="inputChanged">
+            </input>
+            <icon id="clear-icon" type="clear" bindtap="tapClearIcon"/>
+        </view>
+    </view>
+    <view class="empty-area" wx:if="{{cities.length == 0}}">
+        <image id="empty-image" src="../../image/search_city_earth.png" mode='scaleToFill'></image>
+        <image id="empty-text" src="../../image/search_city_text.png" mode='scaleToFill'></image>
+    </view>
+    <view class="city-area" wx:else>
+        <text id="city-search-text">搜索记录</text>
+        <view id="city-panel">
+            <block wx:for="{{cities}}" wx:for-item="item" wx:key="*this">
+                <view class="city-item">
+                    <text class="city-text">{{item}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
 </view>

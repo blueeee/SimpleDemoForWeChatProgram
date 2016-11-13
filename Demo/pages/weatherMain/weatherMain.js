@@ -4,10 +4,8 @@ Page({
     data: {
     },
     onLoad :function(){
-    
-    },
-    onReady: function() {
-      var url = getApp().globalData.weatherQueqyUrl + '?cityname=广州&key=' + getApp().globalData.weatherAPIKey;
+      console.log("MainPage onLoad");
+      var url = getApp().globalData.weatherQueqyUrl + '?cityname=上海&key=' + getApp().globalData.weatherAPIKey;
         var thisthis = this;
         //数据绑定
         var dataBind = function(data) {
@@ -44,6 +42,21 @@ Page({
             console.log("request complete");
           }
         });
+    },
+    onShow :function(option){
+      console.log("MainPage onShow");
+      if(getApp().globalData.queryCityInfo !== null){
+        var newdata = dataAdapter.weatherDataAdapter(getApp().globalData.queryCityInfo);
+        this.setData(newdata);
+        var temperatures = dataAdapter.temperatureDataAdapter(getApp().globalData.queryCityInfo);
+        drawTemperature(temperatures);
+      }
+    },
+    onReady: function() {
+      console.log("MainPage onReady");
+    },
+    onHide :function(){
+      console.log("MainPage onHide");
     },
 });
 
@@ -119,7 +132,7 @@ function drawTemperature(temperatures){
     }
     context.setFontSize(12)
     context.setFillStyle('#ffffff');   
-    context.fillText(dayTemperature[index]+"℃", x - 6, y + 20);
+    context.fillText(nightTemperature[index]+"℃", x - 6, y + 20);
   });
   context.stroke();
   
