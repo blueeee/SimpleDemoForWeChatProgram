@@ -2,11 +2,11 @@ var dataAdapter = require('weatherDataAdapter.js').weather;
 
 Page({
     data: {
-      city:null,
-      weatherDescription:null,
-      temperature:null,
-      topWeatherForecast:null,
-      bottomWeatherForecast:null
+      city:"",
+      weatherDescription:"",
+      temperature:"",
+      topWeatherForecast:[],
+      bottomWeatherForecast:[]
     },
     onLoad :function(){
       console.log("MainPage onLoad");
@@ -50,13 +50,29 @@ Page({
     },
     onShow :function(){
       console.log("MainPage onShow");
+      var thisthis = this;
       var queryCityInfo = getApp().globalData.queryCityInfo;
       if(queryCityInfo !== null){
         var newdata = dataAdapter.weatherDataAdapter(queryCityInfo);
-        this.setData(newdata);
-        var temperatures = dataAdapter.temperatureDataAdapter(queryCityInfo);
-        drawTemperature(temperatures);
-        queryCityInfo = null;
+        this.setData({
+          city:"",
+          weatherDescription:"",
+          temperature:"",
+          topWeatherForecast:[],
+          bottomWeatherForecast:[]
+        });
+        setTimeout(function(){
+          thisthis.setData({
+            city:newdata.city,
+            weatherDescription:newdata.weatherDescription,
+            temperature:newdata.temperature,
+            topWeatherForecast:newdata.topWeatherForecast,
+            bottomWeatherForecast:newdata.bottomWeatherForecast
+          });
+          var temperatures = dataAdapter.temperatureDataAdapter(queryCityInfo);
+          drawTemperature(temperatures);
+          queryCityInfo = null;
+        },10)
       }
     },
     onReady: function() {
