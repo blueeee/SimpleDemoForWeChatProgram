@@ -2,6 +2,11 @@ var dataAdapter = require('weatherDataAdapter.js').weather;
 
 Page({
     data: {
+      city:null,
+      weatherDescription:null,
+      temperature:null,
+      topWeatherForecast:null,
+      bottomWeatherForecast:null
     },
     onLoad :function(){
       console.log("MainPage onLoad");
@@ -43,13 +48,15 @@ Page({
           }
         });
     },
-    onShow :function(option){
+    onShow :function(){
       console.log("MainPage onShow");
-      if(getApp().globalData.queryCityInfo !== null){
-        var newdata = dataAdapter.weatherDataAdapter(getApp().globalData.queryCityInfo);
+      var queryCityInfo = getApp().globalData.queryCityInfo;
+      if(queryCityInfo !== null){
+        var newdata = dataAdapter.weatherDataAdapter(queryCityInfo);
         this.setData(newdata);
-        var temperatures = dataAdapter.temperatureDataAdapter(getApp().globalData.queryCityInfo);
+        var temperatures = dataAdapter.temperatureDataAdapter(queryCityInfo);
         drawTemperature(temperatures);
+        queryCityInfo = null;
       }
     },
     onReady: function() {

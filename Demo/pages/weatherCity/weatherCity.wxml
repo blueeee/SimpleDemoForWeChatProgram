@@ -16,9 +16,10 @@
         <view id="city-panel">
             <block wx:for="{{cities}}" wx:for-item="item" wx:key="*this">
                 <view class="city-item">
-                    <text class="city-text">{{item}}</text>
+                    <text class="city-text" bindtap="tapCityItem" data-search-city="{{item}}">{{item}}</text>
                 </view>
             </block>
         </view>
+        <button id="city-clear-button" bindtap="tapClearCities">清空搜索记录</button>
     </view>
 </view>

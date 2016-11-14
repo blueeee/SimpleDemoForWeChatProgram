@@ -92,3 +92,9 @@ page {
   border-width: 1rpx;
   border-radius: 30rpx;
 }
+#city-clear-button{
+  margin-top: 20rpx;
+  font-size: 27rpx;
+  background-color: #FFFFFF;
+  color: #999999;
+}

@@ -1,12 +1,24 @@
+var storageService = require('../../utils/storageService.js').storageService;
 var touchStartX = 0;
 var searchInputValue = "";
-var allCities = [];
 Page({
     data: {
-        cities : allCities,
+        cities : [],
         inputValue:searchInputValue
     },
-    //
+    onLoad :function(){
+        var thisthis= this;
+        storageService.getSearchCitiesStorage(function(res){
+            thisthis.setData({
+                cities : res
+            });
+        },function(res){
+            thisthis.setData({
+                cities : []
+            });
+        });
+    },
+    //实现左滑退出
     touchStart: function(event) {
         touchStartX = event.changedTouches[0].clientX;
     },
@@ -23,12 +35,57 @@ Page({
     if(searchInputValue.length == 0){
         showIKnowModal("请输入城市名称");
     } else {
-        wx.showToast({
+        requestCityWeather(searchInputValue, function(resData){
+            //本地存储城市
+            storageService.setSearchCityStorage(resData.realtime["city_name"]);
+            //反向传递数据
+            getApp().globalData.queryCityInfo = resData;
+            wx.navigateBack();
+        });
+    } 
+        
+    },
+    //点击清除input
+    tapClearIcon: function(event) {
+        this.setData({
+            inputValue: " "
+        });
+        this.setData({
+            inputValue: ""
+        });
+        searchInputValue = "";
+    },
+    inputChanged: function(event) {
+        searchInputValue = event.detail.value;   
+    },
+    //点击清除城市记录
+    tapClearCities: function(event) {
+        var thisthis= this;
+        storageService.removeSearchCityStorage(function(){
+            thisthis.setData({
+                cities : []
+            });
+        });
+    },
+    tapCityItem: function(event) {
+        console.log(event);
+        requestCityWeather(event.target.dataset.searchCity,function(resData){
+            //本地存储城市
+            storageService.setSearchCityStorage(resData.realtime["city_name"]);
+            //反向传递数据
+            getApp().globalData.queryCityInfo = resData;
+            wx.navigateBack();
+        });
+    }
+});
+//请求input中的城市数据
+function requestCityWeather(city,onSuccess){
+     wx.showToast({
             title: '搜索中',
             icon: 'loading',
         });
-        wx.request({
-        url: getApp().globalData.weatherQueqyUrl + "?cityname=" + searchInputValue + "&key=" + getApp().globalData.weatherAPIKey,
+    wx.request({
+        url: getApp().globalData.weatherQueqyUrl + "?cityname=" + city + "&key=" + getApp().globalData.weatherAPIKey,
         data: {
         },
         method: 'GET',
@@ -43,10 +100,8 @@ Page({
             } else {
                 var resData = res.data.result.data;
                 console.log(resData);
-                getApp().globalData.queryCityInfo = resData;
-                wx.navigateBack();
+                onSuccess(resData)
             }
-            // var resData = res.data.result.data;
         },
         fail: function() {
             // fail
@@ -59,37 +114,7 @@ Page({
             wx.hideToast()
         }
     });
-    }
-    
-        // if(searchInputValue.length > 0){
-        //     if (allCities.includes(searchInputValue)){
-        //         allCities = allCities.filter(function(element){
-        //             return element !== searchInputValue;
-        //         });
-        //         allCities.unshift(searchInputValue);
-        //     } else {
-        //         allCities.unshift(searchInputValue);
-        //     }
-        //     this.setData({
-        //         cities : allCities
-        //     }); 
-        // }
-        
-    },
-    //点击清楚
-    tapClearIcon: function(event) {
-        this.setData({
-            inputValue: " "
-        });
-        this.setData({
-            inputValue: ""
-        });
-        searchInputValue = "";
-    },
-    inputChanged: function(event) {
-        searchInputValue = event.detail.value;   
-    }
-});
+}
 
 function showIKnowModal(text){
     wx.showModal({
@@ -101,5 +126,5 @@ function showIKnowModal(text){
             if (res.confirm) {
             }
         }
-    })
+    });
 }

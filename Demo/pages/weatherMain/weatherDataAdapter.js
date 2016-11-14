@@ -12,7 +12,6 @@ function weatherDataAdapter(originalData) {
         var date = element.date.substring(5,7) + '/' + element.date.substring(8,10);
         var description = element.info.day[1];
         var imageSrc = weatherIconMap(element.info.day[0], false);
-        console.log(imageSrc);
         topWeatherForecast.push({
             day:day,
             date:date,
