@@ -6,11 +6,11 @@ Page({
       weatherDescription:"",
       temperature:"",
       topWeatherForecast:[],
-      bottomWeatherForecast:[]
+      bottomWeatherForecast:[],
+      detail:null
     },
     onLoad :function(){
-      console.log("MainPage onLoad");
-      var url = getApp().globalData.weatherQueqyUrl + '?cityname=上海&key=' + getApp().globalData.weatherAPIKey;
+      var url = encodeURI(getApp().globalData.weatherQueqyUrl + '?cityname=上海&key=' + getApp().globalData.weatherAPIKey).toString();
         var thisthis = this;
         //数据绑定
         var dataBind = function(data) {
@@ -31,7 +31,6 @@ Page({
           },
           success: function(res){
             // success
-            console.log("request success");
             var resData = res.data.result.data;
             dataBind(resData);
             var temperatures = dataAdapter.temperatureDataAdapter(resData);
@@ -49,7 +48,6 @@ Page({
         });
     },
     onShow :function(){
-      console.log("MainPage onShow");
       var thisthis = this;
       var queryCityInfo = getApp().globalData.queryCityInfo;
       if(queryCityInfo !== null){
@@ -76,10 +74,10 @@ Page({
       }
     },
     onReady: function() {
-      console.log("MainPage onReady");
+
     },
     onHide :function(){
-      console.log("MainPage onHide");
+
     },
 });
 

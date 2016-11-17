@@ -32,6 +32,9 @@ function weatherDataAdapter(originalData) {
             wind:wind,
             windLevel:windLevel
         });
+        var detail = {
+            
+        };
     });
     return {
             city:originalData.realtime.city_name,

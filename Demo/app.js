@@ -27,7 +27,7 @@ App({
   globalData:{
     userInfo:null,
     weatherAPIKey:"ea0baa4dddaf58cfed8c9f1da8d0fcb2",
-    weatherQueqyUrl:"http://op.juhe.cn/onebox/weather/query",
+    weatherQueqyUrl:"https://op.juhe.cn/onebox/weather/query",
     queryCityInfo:null
   }
 })

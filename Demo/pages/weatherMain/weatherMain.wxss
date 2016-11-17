@@ -7,7 +7,7 @@ text {
 }
 #container {
   height: 100%;
-  background-image: url("../../image/bg_na.jpg");
+  background-image: url("../../image/bg_na.png");
 }
 scroll-view {
   height: 1204rpx;
@@ -95,4 +95,28 @@ scroll-view {
   padding-left: 93%; 
   width: 40rpx;
   height: 40rpx;
+}
+/*weather-detail*/
+#weather-detail{
+  background-color: rgba(0,0,0,0.2);
+  margin-top: 30rpx;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+}
+.weather-detail-content{
+  margin-top: 35rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.weather-detail-key{
+  width: 360rpx;
+  text-align: end;
+  font-size: 30rpx;
+}
+.weather-detail-value{
+  width: 360rpx;
+  text-align: start;
+  font-size: 30rpx;
 }

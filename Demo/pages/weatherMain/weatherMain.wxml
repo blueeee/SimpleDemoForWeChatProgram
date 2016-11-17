@@ -35,6 +35,14 @@
                     </block>
                 </view>
             </view>
+            <view id="weather-detail">
+                <block wx:for="{{[1,2,3,4,5,6]}}" wx:for-item="item" >
+                    <view class="weather-detail-content">
+                        <text class="weather-detail-key" >紫外线指数</text> 
+                        <text class="weather-detail-value">100</text> 
+                    </view>
+                </block>
+            </view>
         </view>
     </scroll-view>
     <view id="footer">
