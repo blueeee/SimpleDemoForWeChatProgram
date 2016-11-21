@@ -25,7 +25,7 @@
                     </canvas>
                 </view>
                 <view id="forecast-container-bottom" class="forecast-container-days">
-                    <block wx:for="{{bottomWeatherForecast}}" wx:for-item="item" wx:key="*this">
+                    <block wx:for="{{bottomWeatherForecast}}" wx:for-item="item">
                         <view class="weatherForecast-item">
                             <image class="weatherForecast-item-img" src="{{item.nightImageSrc}}"></image>
                             <text class="weatherForecast-item-description">{{item.nightDescription}}</text>
@@ -36,10 +36,10 @@
                 </view>
             </view>
             <view id="weather-detail">
-                <block wx:for="{{[1,2,3,4,5,6]}}" wx:for-item="item" >
+                <block wx:for="{{detail}}" wx:for-item="item">
                     <view class="weather-detail-content">
-                        <text class="weather-detail-key" >紫外线指数</text> 
-                        <text class="weather-detail-value">100</text> 
+                        <text class="weather-detail-key" >{{item.key}}</text> 
+                        <text class="weather-detail-value">{{item.value}}</text> 
                     </view>
                 </block>
             </view>

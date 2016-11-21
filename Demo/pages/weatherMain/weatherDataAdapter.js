@@ -2,6 +2,7 @@
 function weatherDataAdapter(originalData) {
     var topWeatherForecast = [];
     var bottomWeatherForecast = [];
+    var detail = [];
     originalData.weather.forEach(function(element, index, array){
         var day = "";
         if(index == 0) {
@@ -32,16 +33,21 @@ function weatherDataAdapter(originalData) {
             wind:wind,
             windLevel:windLevel
         });
-        var detail = {
-            
-        };
+        detail = [
+            {key:"穿衣",value:originalData.life.info.chuanyi[0]},
+            {key:"空调",value:originalData.life.info.kongtiao[0]},
+            {key:"洗车",value:originalData.life.info.xiche[0]},
+            {key:"运动",value:originalData.life.info.yundong[0]},
+            {key:"紫外线",value:originalData.life.info.ziwaixian[0]},
+            {key:"感冒",value:originalData.life.info.ganmao[0]}];
     });
     return {
             city:originalData.realtime.city_name,
             weatherDescription:originalData.realtime.weather.info,
             temperature:originalData.realtime.weather.temperature,
             topWeatherForecast:topWeatherForecast,
-            bottomWeatherForecast:bottomWeatherForecast
+            bottomWeatherForecast:bottomWeatherForecast,
+            detail:detail
           }
 }
 

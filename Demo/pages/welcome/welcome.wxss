@@ -1,0 +1,69 @@
+#container {
+  height: 100%;
+  background-color: rgba(83,83,83,1);
+  position: relative;
+}
+#welcome-canvas{
+  height: 1250rpx;
+  width: 750rpx;
+  position: absolute;
+  top: -200rpx; left: 0; bottom: 0; right: 0;
+  margin: auto;
+}
+.center{
+  height: 1rpx;
+  width: 1rpx;
+  position: absolute;
+  top: -200rpx; left: 0; bottom: 0; right: 0;
+  margin: auto;
+  border-radius: 1rpx;
+}
+#inner-cycle{
+  z-index: 0;
+  background-color: rgba(21,167,234,1);
+}
+#cloud{
+  opacity: 0;
+  z-index: 1;
+}
+#sun{
+  opacity: 0;
+  height: 2rpx;
+  width: 2rpx;
+  position: absolute;
+  top: -200rpx; left: 160rpx; bottom: 220rpx; right: 0;
+  margin: auto;
+  z-index: 2;
+}
+#sunshine{
+  opacity: 0;
+  height: 600rpx;
+  width: 600rpx;
+  position: absolute;
+  top: -200rpx; left: 140rpx; bottom: 190rpx; right: 0;
+  margin: auto;
+  z-index: 3;
+}
+#welcome-text{
+  position: relative;
+  display: block;
+  top: 900rpx;
+  text-align: center;
+  color: white;
+}
+#postion-text{
+  position: relative;
+  display: block;
+  top: 915rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+}
+#enter-button{
+  display: block;
+  top: 1000rpx;
+  width: 400rpx;
+  color: white;
+  border-color: white;
+  font-size: 32rpx;
+}

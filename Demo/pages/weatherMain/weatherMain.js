@@ -9,17 +9,17 @@ Page({
       bottomWeatherForecast:[],
       detail:null
     },
-    onLoad :function(){
-      var url = encodeURI(getApp().globalData.weatherQueqyUrl + '?cityname=上海&key=' + getApp().globalData.weatherAPIKey).toString();
-        var thisthis = this;
+    onLoad :function(option){
+      var city = option.city;
+      var url = encodeURI(getApp().globalData.weatherQueqyUrl + '?cityname='+city+'&key=' + getApp().globalData.weatherAPIKey).toString();
         //数据绑定
         var dataBind = function(data) {
           //数据转换
           console.log(data);
           var newdata = dataAdapter.weatherDataAdapter(data);
           console.log(newdata);
-          thisthis.setData(newdata);
-        }
+          this.setData(newdata);
+        }.bind(this)
         //进行网络请求
         wx.request({
           url: url,
@@ -48,7 +48,6 @@ Page({
         });
     },
     onShow :function(){
-      var thisthis = this;
       var queryCityInfo = getApp().globalData.queryCityInfo;
       if(queryCityInfo !== null){
         var newdata = dataAdapter.weatherDataAdapter(queryCityInfo);
@@ -57,20 +56,22 @@ Page({
           weatherDescription:"",
           temperature:"",
           topWeatherForecast:[],
-          bottomWeatherForecast:[]
+          bottomWeatherForecast:[],
+          detail:[]
         });
         setTimeout(function(){
-          thisthis.setData({
+          this.setData({
             city:newdata.city,
             weatherDescription:newdata.weatherDescription,
             temperature:newdata.temperature,
             topWeatherForecast:newdata.topWeatherForecast,
-            bottomWeatherForecast:newdata.bottomWeatherForecast
+            bottomWeatherForecast:newdata.bottomWeatherForecast,
+            detail:newdata.detail
           });
           var temperatures = dataAdapter.temperatureDataAdapter(queryCityInfo);
           drawTemperature(temperatures);
           queryCityInfo = null;
-        },10)
+        }.bind(this),10)
       }
     },
     onReady: function() {

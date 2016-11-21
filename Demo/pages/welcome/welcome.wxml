@@ -1,0 +1,15 @@
+<view id="container">
+    <canvas canvas-id="welcomeCanvas" id="welcome-canvas">
+    </canvas>
+    <view id="inner-cycle" class ="center" animation="{{animation.innerCycle}}" hidden="{{innerCycleHidden}}">
+    </view>
+    <image id="cloud" class ="center" animation="{{animation.cloud}}" style="{{cloudOpacity}}" src="../../image/cloud.png" >
+    </image>
+    <image id="sun" animation="{{animation.sun}}" style="{{sunOpacity}}" src="../../image/sun.png" >
+    </image>
+    <image id="sunshine" animation="{{animation.sunshine}}" style="{{sunshineOpacity}}" src="../../image/sunshine.png" >
+    </image>
+    <text id="welcome-text" style="{{textOpacity}}" animation="{{animation.text}}">{{welcomeText}}</text>
+    <text id="postion-text" bindtap="tapPositon" style="{{textOpacity}}" animation="{{animation.text}}">{{postion}}</text>
+    <button id="enter-button" plain="true" style="{{textOpacity}}" bindtap="tapEnterButton">点击进入</button>
+<view>

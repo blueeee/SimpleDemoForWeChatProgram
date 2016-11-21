@@ -13,7 +13,7 @@ scroll-view {
   height: 1204rpx;
 }
 #container-back{
-  height: 2000rpx;
+  height: 1600rpx;
   padding-top: 50rpx;
 }
 #title {
@@ -100,12 +100,12 @@ scroll-view {
 #weather-detail{
   background-color: rgba(0,0,0,0.2);
   margin-top: 30rpx;
-  height: 500rpx;
+  height: 360rpx;
   display: flex;
   flex-direction: column;
 }
 .weather-detail-content{
-  margin-top: 35rpx;
+  margin-top: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

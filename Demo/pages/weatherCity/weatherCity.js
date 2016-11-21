@@ -7,16 +7,15 @@ Page({
         inputValue:searchInputValue
     },
     onLoad :function(){
-        var thisthis= this;
         storageService.getSearchCitiesStorage(function(res){
-            thisthis.setData({
+            this.setData({
                 cities : res
             });
-        },function(res){
-            thisthis.setData({
+        }.bind(this),function(res){
+            this.setData({
                 cities : []
             });
-        });
+        }.bind(this));
     },
     //实现左滑退出
     touchStart: function(event) {
@@ -60,12 +59,11 @@ Page({
     },
     //点击清除城市记录
     tapClearCities: function(event) {
-        var thisthis= this;
         storageService.removeSearchCityStorage(function(){
-            thisthis.setData({
+            this.setData({
                 cities : []
             });
-        });
+        }.bind(this));
     },
     tapCityItem: function(event) {
         console.log(event);
