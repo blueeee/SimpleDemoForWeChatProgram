@@ -17,7 +17,7 @@ Page({
         cloudOpacity: "opacity: 0",
         sunOpacity: "opacity: 0",
         welcomeText:"",
-        postion:"点击获取当前位置",
+        postion:"当前位置:上海",
         textOpacity: "opacity: 0",
     },
     //点击位置
@@ -57,15 +57,15 @@ Page({
                 var latitude = res.latitude;
                 var longitude = res.longitude;
                  wx.request({
-                    url: "http://api.map.baidu.com/?qt=rgc&x="+latitude+
+                    url: "https://api.map.baidu.com/?qt=rgc&x="+latitude+
                         "&y="+longitude,
                     data: {
                     },
                     method: 'GET',
                     header: {
                         'Content-Type': 'application/javascript;charset=utf-8',
-                        'user-agent':
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36'
+                        'User-Agent':
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36'
                     },
                     success: function(res){
                         // success
@@ -94,7 +94,7 @@ Page({
         this.showSunshine();
         this.showText();
     },
-
+    //绘制外部圆圈
     drawOuterCycle :function(){
         context.beginPath(0);
         context.arc(canvasWidth/2,canvasHeight/2 ,150 , 0, angleIndex * angleGap);
@@ -110,6 +110,7 @@ Page({
             clearInterval(this.interval)
         }
     },
+    //蓝色圆动画
     showInnerCycle :function(){
         var innerCycleAnimation = wx.createAnimation({
             timingFunction: 'ease',
@@ -148,6 +149,7 @@ Page({
         }.bind(this));
 
     },
+    //云朵动画
     showCloud :function(){
         var cloudAnimation = wx.createAnimation({
             cloudAnimation: 'ease',
@@ -186,7 +188,7 @@ Page({
             }.bind(this), element.timeout);
         }.bind(this));
     },
-
+    //太阳动画
     showSun :function(){
         var sunAnimation = wx.createAnimation({
             sunAnimation: 'ease',
@@ -225,7 +227,7 @@ Page({
             }.bind(this), element.timeout);
         }.bind(this));
     },
-
+    //阳光
     showSunshine :function(){
         var sunshineAnimation = wx.createAnimation({
             sunshineAnimation: 'ease',
@@ -236,16 +238,16 @@ Page({
             });
         }.bind(this), 3030);
         
-        // setTimeout(function() {
-        //     sunshineAnimation.rotateZ(36000).step({ duration: 100000 });
-        //     this.setData({
-        //         animation:{
-        //             sunshine:sunshineAnimation.export()
-        //         }
-        //     });
-        // }.bind(this), 3030);
+        setTimeout(function() {
+            sunshineAnimation.rotateZ(360000000000).step({ duration: 1000000000000 });
+            this.setData({
+                animation:{
+                    sunshine:sunshineAnimation.export()
+                }
+            });
+        }.bind(this), 3030);
     },
-
+    //文字和点击进入按钮动画
     showText :function(){
          setTimeout(function() {
              this.interval = setInterval(this.changeTextOpacity, 15);

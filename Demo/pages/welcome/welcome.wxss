@@ -40,7 +40,7 @@
   height: 600rpx;
   width: 600rpx;
   position: absolute;
-  top: -200rpx; left: 140rpx; bottom: 190rpx; right: 0;
+  top: -200rpx; left: 155rpx; bottom: 220rpx; right: 0;
   margin: auto;
   z-index: 3;
 }
